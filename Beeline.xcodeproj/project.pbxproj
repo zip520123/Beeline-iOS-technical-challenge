@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		E765ED2124F9888100FA049D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E765ED2024F9888100FA049D /* AppDelegate.swift */; };
-		E765ED2324F9888100FA049D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E765ED2224F9888100FA049D /* SceneDelegate.swift */; };
 		E765ED2524F9888100FA049D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E765ED2424F9888100FA049D /* ViewController.swift */; };
 		E765ED2824F9888100FA049D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E765ED2624F9888100FA049D /* Main.storyboard */; };
 		E765ED2A24F9888300FA049D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E765ED2924F9888300FA049D /* Assets.xcassets */; };
@@ -29,7 +28,6 @@
 /* Begin PBXFileReference section */
 		E765ED1D24F9888100FA049D /* Beeline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beeline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E765ED2024F9888100FA049D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E765ED2224F9888100FA049D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E765ED2424F9888100FA049D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E765ED2724F9888100FA049D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E765ED2924F9888300FA049D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,12 +77,9 @@
 		E765ED1F24F9888100FA049D /* Beeline */ = {
 			isa = PBXGroup;
 			children = (
+				E765ED4324F98FCA00FA049D /* DefaultVC */,
 				E765ED2024F9888100FA049D /* AppDelegate.swift */,
-				E765ED2224F9888100FA049D /* SceneDelegate.swift */,
-				E765ED2424F9888100FA049D /* ViewController.swift */,
-				E765ED2624F9888100FA049D /* Main.storyboard */,
-				E765ED2924F9888300FA049D /* Assets.xcassets */,
-				E765ED2B24F9888300FA049D /* LaunchScreen.storyboard */,
+				E765ED4224F988F100FA049D /* support */,
 				E765ED2E24F9888300FA049D /* Info.plist */,
 			);
 			path = Beeline;
@@ -97,6 +92,24 @@
 				E765ED3924F9888300FA049D /* Info.plist */,
 			);
 			path = BeelineTests;
+			sourceTree = "<group>";
+		};
+		E765ED4224F988F100FA049D /* support */ = {
+			isa = PBXGroup;
+			children = (
+				E765ED2624F9888100FA049D /* Main.storyboard */,
+				E765ED2924F9888300FA049D /* Assets.xcassets */,
+				E765ED2B24F9888300FA049D /* LaunchScreen.storyboard */,
+			);
+			path = support;
+			sourceTree = "<group>";
+		};
+		E765ED4324F98FCA00FA049D /* DefaultVC */ = {
+			isa = PBXGroup;
+			children = (
+				E765ED2424F9888100FA049D /* ViewController.swift */,
+			);
+			path = DefaultVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,7 +215,6 @@
 			files = (
 				E765ED2524F9888100FA049D /* ViewController.swift in Sources */,
 				E765ED2124F9888100FA049D /* AppDelegate.swift in Sources */,
-				E765ED2324F9888100FA049D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +377,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N2M8C53W8L;
 				INFOPLIST_FILE = Beeline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,6 +396,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N2M8C53W8L;
 				INFOPLIST_FILE = Beeline/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
