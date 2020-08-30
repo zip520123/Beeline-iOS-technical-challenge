@@ -1,0 +1,6 @@
+framework module Pods_Beeline {
+  umbrella header "Pods-Beeline-umbrella.h"
+
+  export *
+  module * { export * }
+}
