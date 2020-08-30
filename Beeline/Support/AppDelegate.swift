@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import RxSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
-
+  let disposeBag = DisposeBag()
+  let viewModel = AppDelegateViewModel()
+  
+  override init() {
+    super.init()
+    binding()
+  }
+  
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
     let defaultVC = ViewController()
@@ -20,6 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window?.rootViewController = defaultVC
     return true
   }
-
+  
+  func binding() {
+    
+  }
+  
+  
 }
 
