@@ -120,7 +120,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
     askAlwaysAuthorizationButton.rx.tap.bind(to: viewModel.inputs.requestAlwaysAuthorization)
       .disposed(by: disposeBag)
     
-    askDirectionsButton.rx.tap.bind(to: viewModel.inputs.requestDirections)
+    askDirectionsButton.rx.tap.subscribe(onNext: {[weak self] (_) in
+      guard let self = self else { return }
+      self.viewModel.inputs.requestDirections.accept(self.mapView.centerCoordinate)
+    })
       .disposed(by: disposeBag)
     
     viewModel.outputs.authoriztionStatus.drive(onNext: {[weak self] (status) in
@@ -143,7 +146,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         self?.askDirectionsButton.isHidden = false
         self?.label.text = "Please select your destination"
       } else {
-        self?.askAlwaysAuthorizationButton.isHidden = true
+        self?.askAlwaysAuthorizationButton.isHidden = false
         self?.askDirectionsButton.isHidden = true
         self?.label.text = "Welcome, please turn on the location Privacy to continue."
       }
@@ -157,6 +160,15 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     viewModel.outputs.heading.drive(onNext: {[weak self] (heading) in
       self?.updateHeadingRotation(heading: heading)
+    }).disposed(by: disposeBag)
+    
+    viewModel.outputs.directions.drive(onNext: {[weak self] (response) in
+      guard let self = self else { return }
+      self.mapView.removeOverlays(self.mapView.overlays)
+      for route in response.routes {
+        self.mapView.addOverlay(route.polyline)
+
+      }
     }).disposed(by: disposeBag)
   }
   
@@ -244,5 +256,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
   }
   
   
+  func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+    let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
+    renderer.strokeColor = .blue
+    return renderer
+  }
 }
 

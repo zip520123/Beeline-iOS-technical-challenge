@@ -19,6 +19,7 @@
 		E786D73324F998B20054CBE4 /* CLLocationManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E786D73224F998B20054CBE4 /* CLLocationManager+Rx.swift */; };
 		E786D73524F9990A0054CBE4 /* RxCLLocationManagerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E786D73424F9990A0054CBE4 /* RxCLLocationManagerDelegateProxy.swift */; };
 		E786D73A24F9A4960054CBE4 /* DefaultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E786D73924F9A4960054CBE4 /* DefaultViewModel.swift */; };
+		E786D73C24FC65AD0054CBE4 /* Rx+extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = E786D73B24FC65AD0054CBE4 /* Rx+extention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		E786D73224F998B20054CBE4 /* CLLocationManager+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Rx.swift"; sourceTree = "<group>"; };
 		E786D73424F9990A0054CBE4 /* RxCLLocationManagerDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxCLLocationManagerDelegateProxy.swift; sourceTree = "<group>"; };
 		E786D73924F9A4960054CBE4 /* DefaultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultViewModel.swift; sourceTree = "<group>"; };
+		E786D73B24FC65AD0054CBE4 /* Rx+extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rx+extention.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 		E786D73124F9986E0054CBE4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E786D73B24FC65AD0054CBE4 /* Rx+extention.swift */,
 				E786D73224F998B20054CBE4 /* CLLocationManager+Rx.swift */,
 				E786D73424F9990A0054CBE4 /* RxCLLocationManagerDelegateProxy.swift */,
 			);
@@ -334,6 +337,7 @@
 			files = (
 				E786D73524F9990A0054CBE4 /* RxCLLocationManagerDelegateProxy.swift in Sources */,
 				E786D73A24F9A4960054CBE4 /* DefaultViewModel.swift in Sources */,
+				E786D73C24FC65AD0054CBE4 /* Rx+extention.swift in Sources */,
 				E786D72C24F995D90054CBE4 /* AppDelegateViewModel.swift in Sources */,
 				E786D73324F998B20054CBE4 /* CLLocationManager+Rx.swift in Sources */,
 				E765ED2524F9888100FA049D /* ViewController.swift in Sources */,
