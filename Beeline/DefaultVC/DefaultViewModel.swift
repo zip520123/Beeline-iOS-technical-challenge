@@ -57,7 +57,7 @@ final class DefaultViewModel {
     .map { $0.coordinate }
     
     let directions = requestDirections.withLatestFrom(location) { ($0, $1) }
-      .flatMap { (startCoordinate, destinationCoordinate) -> Observable<MKDirections.Response> in
+      .flatMapLatest { (startCoordinate, destinationCoordinate) -> Observable<MKDirections.Response> in
         
         let startingLocaiton = MKPlacemark(coordinate: startCoordinate)
         let destination = MKPlacemark(coordinate: destinationCoordinate)
@@ -65,7 +65,7 @@ final class DefaultViewModel {
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: startingLocaiton)
         request.destination = MKMapItem(placemark: destination)
-        
+        request.transportType = .walking
         let directions = MKDirections(request: request)
         
         let observable = Observable<MKDirections.Response>.create { (observer) in

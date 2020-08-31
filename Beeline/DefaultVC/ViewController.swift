@@ -23,6 +23,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
   var headingImageView : UIImageView?
   let pinView = UIImageView(image: UIImage(named: "pin"))
   let disposeBag = DisposeBag()
+  var destinationString = ""
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -165,10 +166,16 @@ class ViewController: UIViewController, MKMapViewDelegate {
     viewModel.outputs.directions.drive(onNext: {[weak self] (response) in
       guard let self = self else { return }
       self.mapView.removeOverlays(self.mapView.overlays)
+      var totalDistance: Double = 0
+      var totalTime: Double = 0
       for route in response.routes {
         self.mapView.addOverlay(route.polyline)
-
+        totalDistance += route.distance
+        totalTime += route.expectedTravelTime
       }
+      totalTime /= 60
+      self.label.text = "From current to \(self.destinationString) \n\(totalDistance.rounded()) meters, \(totalTime.rounded()) minutes"
+      self.statusLabel.text = ""
     }).disposed(by: disposeBag)
   }
   
@@ -230,15 +237,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
         self.addressLabel.text = "error: \(error)"
         return
       }
-      guard let placemark = placemarks?.first else {
-        return
-      }
+      guard let placemark = placemarks?.first else { return }
       
       let streetNumber = placemark.subThoroughfare ?? ""
       let streetName = placemark.thoroughfare ?? ""
       
       DispatchQueue.main.async {
         self.addressLabel.text = "\(streetNumber) \(streetName)"
+        self.destinationString = "\(streetNumber) \(streetName)"
       }
       
       mapView.removeAnnotations(mapView.annotations.filter { !($0 is MKUserLocation) })
@@ -259,6 +265,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
     let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
     renderer.strokeColor = .blue
+    renderer.lineWidth = 2
     return renderer
   }
 }
